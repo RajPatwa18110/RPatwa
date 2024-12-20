@@ -342,7 +342,19 @@
   .hamburger {
     display: block;
   }
+/* Toggle button */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 1002; /* Ensure it is above the overlay */
+  position: relative; /* Add position to apply z-index */
+}
 
+/* Overlay for background blur */
 .overlay {
   position: fixed;
   top: 0;
@@ -351,7 +363,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
-  z-index: 1001;
+  z-index: 1000; /* Lower than menu toggle */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
