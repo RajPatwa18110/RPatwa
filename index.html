@@ -333,30 +333,31 @@
                 font-size: 1.2rem;
             }
 
-            .navbar .nav-links {
-                display: none;
-                flex-direction: column;
-                background-color: rgba(0, 0, 0, 0.8);
-                position: absolute;
-                top: 60px;
-                right: 20px;
-                width: 200px;
-                padding: 20px;
-                border-radius: 10px;
-            }
-
-            .navbar.active .nav-links {
-                display: flex;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
+            
+            
             .about img {
                 max-width: 100%;
+            }}
+            @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
             }
-        }
     </style>
 </head>
 <body>
@@ -369,7 +370,7 @@
                 <div class="hamburger" id="hamburger">
                     <i class="fas fa-bars"></i>
                 </div>
-                <ul class="nav-links" id="nav-links">
+                <ul class="nav-links show" id="nav-links">
                     <li><a href="#navbar">Home</a></li>
                     <li><a href="#features">Features</a></li>
                         <li><a href="#about">About Us</a></li>
@@ -512,12 +513,10 @@
 
     <!-- JavaScript for Mobile Menu Toggle -->
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        document.getElementById('hamburger').addEventListener('click', () => {
+  const navLinks = document.getElementById('nav-links');
+  navLinks.classList.toggle('show');
+});
     </script>
 
 </body>
