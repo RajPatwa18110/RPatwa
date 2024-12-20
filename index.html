@@ -88,12 +88,6 @@
             width: 100%;
         }
 
-        /* Mobile Menu */
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            cursor: pointer;
-        }
 
         /* Hero Section */
         .hero {
@@ -231,17 +225,6 @@
                 flex: 0 1 100%; /* 1 box per row on mobile */
             }
         }
-/* Toggle button */
-.hamburger {
-  
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5em;
-  cursor: pointer;
-  z-index: 1001;
-}
 
 
 
@@ -350,12 +333,22 @@
             
             .about img {
                 max-width: 100%;
-            }}
-            @media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-                /* Overlay for background blur */
+            }
+        }
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 1002; /* Ensure toggle is above everything */
+  position: relative; /* Allow z-index to take effect */
+}
+
+
+
+/* Overlay for background blur */
 .overlay {
   position: fixed;
   top: 0;
@@ -364,7 +357,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
-  z-index: 1000;
+  z-index: 1000; /* Keep below toggle and menu */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -381,14 +374,20 @@
   background-color: #333;
   padding: 20px;
   border-radius: 8px;
-  z-index: 1001;
+  z-index: 1001; /* Below toggle */
+}
+
+.nav-links.show {
+  display: flex;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
 }
         
-
-  .nav-links.show {
-    display: flex;
-  }
-            }
     </style>
 </head>
 <body>
@@ -399,7 +398,7 @@
         <div class="navbar">
             <h1>RPatwa</h1>
             <nav>
-                <div class="hamburger" id="hamburger">
+                <div class="menu-toggle" id="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </div>
                 <ul class="nav-links show" id=/* Overlay for background blur */
@@ -546,7 +545,7 @@
 
     <!-- JavaScript for Mobile Menu Toggle -->
     <script>
-        const menuToggle = document.getElementById('hamburger');
+        const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 const overlay = document.getElementById('overlay');
 
