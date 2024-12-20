@@ -344,14 +344,14 @@
   }
 /* Toggle button */
 .hamburger {
+  
   display: none;
   background: none;
   border: none;
   color: white;
   font-size: 1.5em;
   cursor: pointer;
-  z-index: 1002; /* Ensure it is above the overlay */
-  position: relative; /* Add position to apply z-index */
+  z-index: 1001;
 }
 
 /* Overlay for background blur */
@@ -363,7 +363,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
-  z-index: 1000; /* Lower than menu toggle */
+  z-index: 1000;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -372,17 +372,16 @@
 /* Centered menu styles */
 .nav-links {
   display: none;
-    font-size: 1em;
   flex-direction: column;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #333;
-  padding: 60px;
+  padding: 20px;
   border-radius: 8px;
   z-index: 1001;
-}
+    }
 
 
   .nav-links.show {
@@ -402,7 +401,8 @@
                 <div class="hamburger" id="hamburger">
                     <i class="fas fa-bars"></i>
                 </div>
-                <ul class="nav-links show" id="nav-links">
+                <ul class="nav-links show" id=/* Overlay for background blur */
+                 <div class="nav-links" id=“nav-links”>
                     <li><a href="#navbar">Home</a></li>
                     <li><a href="#features">Features</a></li>
                         <li><a href="#about">About Us</a></li>
