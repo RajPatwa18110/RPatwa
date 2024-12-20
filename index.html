@@ -360,6 +360,7 @@
 /* Centered menu styles */
 .nav-links {
   display: none;
+    font-size: 1em;
   flex-direction: column;
   position: fixed;
   top: 50%;
@@ -536,11 +537,33 @@
 const navLinks = document.getElementById('nav-links');
 const overlay = document.getElementById('overlay');
 
-menuToggle.addEventListener('click', () => {
+// Function to close the menu
+const closeMenu = () => {
+  navLinks.classList.remove('show');
+  overlay.style.opacity = '0';
+  overlay.style.visibility = 'hidden';
+  menuToggle.textContent = '☰';
+};
+
+// Toggle the menu
+menuToggle.addEventListener('click', (e) => {
+  e.stopPropagation(); // Prevent triggering the document click event
   const isMenuOpen = navLinks.classList.toggle('show');
   overlay.style.opacity = isMenuOpen ? '1' : '0';
   overlay.style.visibility = isMenuOpen ? 'visible' : 'hidden';
   menuToggle.textContent = isMenuOpen ? '✖' : '☰';
+});
+
+// Close the menu when clicking outside of it
+document.addEventListener('click', (e) => {
+  if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+    closeMenu();
+  }
+});
+
+// Close the menu when a link is clicked
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeMenu);
 });
     </script>
 
